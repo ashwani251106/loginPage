@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Ash Tech Blogging</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --sidebar: #1e293b;
+            --accent: #38bdf8;
+            --text: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #94a3b8;
+        }
+
+        .nav-links li.active {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+        }
+
+        .nav-links li:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .welcome-header {
+            margin-bottom: 40px;
+        }
+
+        .welcome-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .welcome-header span {
+            color: var(--accent);
+        }
+
+        /* Acknowledgement Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .ack-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .ack-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(56, 189, 248, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            font-size: 0.75rem;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="logo">Ash Tech</div>
+        <ul class="nav-links">
+            <li class="active">Overview</li>
+            <li>My Articles</li>
+            <li>Course Progress</li>
+            <li>Settings</li>
+            <a style="margin-top: auto; color: #f87171;" href="/logout">Logout</a>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="welcome-header">
+            <h1>Welcome back, <span><%=userName%></span></h1>
+            <p>Here is what's happening with your tech profile today.</p>
+        </div>
+
+        <div class="grid">
+            <div class="ack-card">
+                <div class="icon">✓</div>
+                <h3>Profile Verified</h3>
+                <p>Your developer profile is 100% complete. You are now eligible to post articles to the community.</p>
+                <div class="status-badge">Completed</div>
+            </div>
+
+            <div class="ack-card">
+                <div class="icon">★</div>
+                <h3>New Achievement</h3>
+                <p>Congratulations! You've successfully linked your first course to your profile. Keep learning!</p>
+                <div class="status-badge">New</div>
+            </div>
+
+            <div class="ack-card">
+                <div class="icon">🔔</div>
+                <h3>System Update</h3>
+                <p>The Ash Tech 2.0 update is now live. Check out the new dark mode and faster loading speeds.</p>
+                <div class="status-badge">System</div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

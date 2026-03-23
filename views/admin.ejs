@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Ash Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #020617;
+            --card: #1e293b;
+            --accent: #f43f5e; /* Rose/Red for Admin feel */
+            --text: #f8fafc;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            background: #0f172a;
+            border-right: 1px solid var(--border);
+            padding: 30px;
+            position: fixed;
+        }
+
+        .admin-badge {
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            vertical-align: middle;
+        }
+
+        /* Main Content */
+        .main { margin-left: 280px; padding: 40px; width: 100%; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-box {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-box h4 { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; }
+        .stat-box p { font-size: 1.8rem; font-weight: 700; margin-top: 5px; }
+
+        /* Table */
+        .user-table-container {
+            background: var(--card);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: rgba(255, 255, 255, 0.05); padding: 15px; color: #94a3b8; font-size: 0.9rem; }
+        td { padding: 15px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+
+        .btn-delete {
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-delete:hover { background: var(--accent); color: white; }
+
+        .status-online { color: #10b981; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2 style="margin-bottom: 30px;">Ash Tech <span class="admin-badge">Admin</span></h2>
+        <nav>
+            <p style="color: #475569; font-size: 0.8rem; margin-bottom: 15px;">MANAGEMENT</p>
+            <div style="color: var(--accent); margin-bottom: 15px; cursor: pointer;">User Controls</div>
+            <div style="color: #94a3b8; margin-bottom: 15px; cursor: pointer;">System Logs</div>
+            <div style="color: #94a3b8; margin-bottom: 15px; cursor: pointer;">Database Status</div>
+        </nav>
+        <div style="position: absolute; bottom: 30px;">
+            <a href="/logout" style="color: #94a3b8; text-decoration: none;">← Logout</a>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header style="margin-bottom: 30px;">
+            <h1>System Overview</h1>
+            <p style="color: #94a3b8;">Welcome, Root Administrator</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h4>Total Users</h4>
+                <p>1,284</p>
+            </div>
+            <div class="stat-box">
+                <h4>Server Load</h4>
+                <p>24%</p>
+            </div>
+            <div class="stat-box">
+                <h4>Active Sessions</h4>
+                <p class="status-online">82</p>
+            </div>
+        </div>
+
+        <h3>Registered Users</h3>
+        <br>
+        <div class="user-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#69bfdd...</td>
+                        <td>Ashwani</td>
+                        <td>ashwani@example.com</td>
+                        <td><span class="status-online">● Online</span></td>
+                        <td><button class="btn-delete">Revoke Access</button></td>
+                    </tr>
+                    <tr>
+                        <td>#72afcc...</td>
+                        <td>John Doe</td>
+                        <td>john@tech.com</td>
+                        <td>Offline</td>
+                        <td><button class="btn-delete">Revoke Access</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+</html>
